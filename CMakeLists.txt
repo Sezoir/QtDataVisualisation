@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.13)
 project(DataVisualisation LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -13,24 +12,24 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(QT_VERSION_REQ "5.15")
 
-list(APPEND CMAKE_PREFIX_PATH ${ROOT_SOURCE_DIR}/CMake/)
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMake/)
 
 # Get qt packages
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
 # Get dependencies packages
-set(QXLSX_DIR ${ROOT_SOURCE_DIR}/Dependencies/QXlsx)
+set(QXLSX_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/QXlsx)
 find_package(QXlsx CONFIG REQUIRED)
 
 # Store default source files for root files
 set(SOURCE_FILES
-    ${ROOT_SOURCE_DIR}/main.cpp
-    ${ROOT_SOURCE_DIR}/Bootloader/Startup.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Bootloader/Startup.cpp
     qml.qrc)
 
 # Store default header files for root files
 set(HEADER_FILES
-    ${ROOT_SOURCE_DIR}/Bootloader/Startup.hpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/Bootloader/Startup.hpp)
 
 ## Get all files from app
 file(GLOB_RECURSE APP_SOURCE_FILES App/*.cpp)
@@ -39,6 +38,8 @@ file(GLOB_RECURSE APP_HEADER_FILES App/*.hpp)
 # Append results to source/header file variables
 list(APPEND SOURCE_FILES ${APP_SOURCE_FILES})
 list(APPEND HEADER_FILES ${APP_HEADER_FILES})
+
+message(${HEADER_FILES})
 
 # Add executable using glob files
 add_executable(DataVisualisation

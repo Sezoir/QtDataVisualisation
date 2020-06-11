@@ -1,4 +1,5 @@
 #include "Startup.hpp"
+#include "App/Model/PopModel.hpp"
 
 namespace Bootloader
 {
@@ -8,6 +9,9 @@ namespace Bootloader
         mApp(new App::Application(this)),
         mIsValid(true)
     {
+        // Register models
+        loadModels();
+
         // Load main view
         loadMainView();
     }
@@ -16,6 +20,11 @@ namespace Bootloader
     {
         delete this->mApp;
         delete this->mEngine;
+    }
+
+    void Startup::loadModels()
+    {
+        qmlRegisterType<App::Models::PopModel>("Pop", 1, 0, "PopModel");
     }
 
     void Startup::loadMainView()
