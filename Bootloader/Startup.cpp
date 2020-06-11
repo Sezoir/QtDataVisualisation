@@ -1,13 +1,21 @@
 #include "Startup.hpp"
 
-namespace Bootloader {
+namespace Bootloader
+{
     Startup::Startup() :
         QObject(nullptr),
-        mEngine(new QQmlApplicationEngine()),
+        mEngine(new QQmlApplicationEngine(this)),
+        mApp(new App::Application(this)),
         mIsValid(true)
     {
         // Load main view
         loadMainView();
+    }
+
+    Startup::~Startup()
+    {
+        delete this->mApp;
+        delete this->mEngine;
     }
 
     void Startup::loadMainView()

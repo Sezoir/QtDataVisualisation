@@ -8,5 +8,8 @@ Window {
     height: 480
     title: qsTr("Hello World")
 
-
+    Button {
+        x: 50
+        y: 100
+    }
 }

@@ -1,5 +1,6 @@
 #pragma once
-#
+#include "App/Application.hpp"
+
 #include <QObject>
 #include <QQmlApplicationEngine>
 
@@ -9,8 +10,8 @@ namespace Bootloader {
     Q_OBJECT
     public:
         // Constructor/Destructor
-        Startup();
-        ~Startup() = default;
+        explicit Startup();
+        ~Startup();
 
         /**
          * @brief Get the current value of mIsValid
@@ -23,6 +24,8 @@ namespace Bootloader {
         QQmlApplicationEngine * mEngine;
         // Root object of qml
         QObject * mRoot;
+        // Application
+        App::Application * mApp;
         // States whether application has successfully loaded
         bool mIsValid;
 
