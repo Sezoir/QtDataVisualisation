@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "Bootloader/Startup.hpp"
+#include <xlsxcell.h>
 
 int main(int argc, char *argv[])
 {

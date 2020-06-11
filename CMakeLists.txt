@@ -13,13 +13,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(QT_VERSION_REQ "5.15")
 
+list(APPEND CMAKE_PREFIX_PATH ${ROOT_SOURCE_DIR}/CMake/)
+
+# Get qt packages
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+
+# Get dependencies packages
+set(QXLSX_DIR ${ROOT_SOURCE_DIR}/Dependencies/QXlsx)
+find_package(QXlsx CONFIG REQUIRED)
 
 # Store default source files for root files
 set(SOURCE_FILES
     ${ROOT_SOURCE_DIR}/main.cpp
     ${ROOT_SOURCE_DIR}/Bootloader/Startup.cpp
     qml.qrc)
+
 # Store default header files for root files
 set(HEADER_FILES
     ${ROOT_SOURCE_DIR}/Bootloader/Startup.hpp)
@@ -48,4 +56,5 @@ target_compile_definitions(DataVisualisation
 # Link libraries
 target_link_libraries(DataVisualisation PRIVATE
     Qt5::Core
-    Qt5::Quick)
+    Qt5::Quick
+    QXlsx)
