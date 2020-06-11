@@ -1,23 +1,25 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "Bootloader/Startup.hpp"
 
 int main(int argc, char *argv[])
 {
+    // Enagle high dpi scaling
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+    // Create core application
     QGuiApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
+    // Bootload project
+    Bootloader::Startup loader;
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    // Check roject has been created successfully
+    if(loader.getSuccess())
+    {
+        // Enter main event loop
+        return app.exec();
+    }
 
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-
-    engine.load(url);
-
-    return app.exec();
+    // Return error
+    return -1;
 }

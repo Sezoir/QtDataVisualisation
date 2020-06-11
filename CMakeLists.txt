@@ -17,6 +17,8 @@ find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
 add_executable(DataVisualisation
   main.cpp
+  Bootloader/Startup.cpp
+  Bootloader/Startup.hpp
   qml.qrc
 )
 
@@ -27,18 +29,3 @@ target_compile_definitions(DataVisualisation
 target_link_libraries(DataVisualisation PRIVATE
     Qt5::Core
     Qt5::Quick)
-
-
-
-
-#set(CMAKE_AUTOMOC ON)
-#QT5_WRAP_UI( UI_HDRS ${UI_FILES} )
-
-#ADD_EXECUTABLE(${MOC_HEADERS})
-
-#target_link_libraries(${PROJECT_NAME}
-#  Qt5::Core
-#  Qt5::Quick
-#  Qt5::Widgets
-#  Qt5::Gui
-#)
