@@ -6,7 +6,7 @@
 namespace App{
     struct PopulationItem
     {
-        QString country;
+        QString city;
         int year;
         int population;
     };

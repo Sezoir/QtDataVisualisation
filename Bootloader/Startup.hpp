@@ -29,8 +29,6 @@ namespace Bootloader {
         // States whether application has successfully loaded
         bool mIsValid;
 
-        void loadModels();
-
         /**
          * @brief Loads the main view qml
          */

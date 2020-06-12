@@ -6,12 +6,9 @@ namespace Bootloader
     Startup::Startup() :
         QObject(nullptr),
         mEngine(new QQmlApplicationEngine(this)),
-        mApp(new App::Application(this)),
+        mApp(new App::Application(this, this->mEngine)),
         mIsValid(true)
     {
-        // Register models
-        loadModels();
-
         // Load main view
         loadMainView();
     }
@@ -20,11 +17,6 @@ namespace Bootloader
     {
         delete this->mApp;
         delete this->mEngine;
-    }
-
-    void Startup::loadModels()
-    {
-        qmlRegisterType<App::Models::PopModel>("Pop", 1, 0, "PopModel");
     }
 
     void Startup::loadMainView()

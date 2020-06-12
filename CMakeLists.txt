@@ -59,3 +59,7 @@ target_link_libraries(DataVisualisation PRIVATE
     Qt5::Core
     Qt5::Quick
     QXlsx)
+
+# Copy excel dataset to build
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Dataset/global-city-population-estimates.xlsx
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

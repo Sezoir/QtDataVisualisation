@@ -1,13 +1,14 @@
 #pragma once
-
 #include <QAbstractListModel>
-#include <QObject>
+#include "PopList.hpp"
 
-namespace App::Models {
+namespace App::Model {
+//    class PopList;
+
     class PopModel : public QAbstractListModel
     {
         Q_OBJECT
-
+        Q_PROPERTY(PopList* list READ list WRITE setList)
     public:
         explicit PopModel(QObject *parent = nullptr);
 
@@ -30,7 +31,11 @@ namespace App::Models {
 
         virtual QHash<int, QByteArray> roleNames() const override;
 
+        PopList *list() const;
+        void setList(PopList *list);
+
     private:
+        PopList* mList;
     };
 }
 

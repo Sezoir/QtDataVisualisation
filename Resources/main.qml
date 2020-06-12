@@ -6,25 +6,30 @@ import QtDataVisualization 1.15
 import Pop 1.0
 
 Window {
+    property int screenHeight: Screen.height -1
+    property int screenWidth: Screen.width
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
+    title: qsTr("DataVisualisation")
 
     Item {
-        width: 640
-        height: 480
+        anchors.fill: parent
 
         Bars3D {
-            width: parent.width
-            height: parent.height
+            anchors.fill: parent
+//            barSpacing: 10
+            barSpacingRelative: true
+            barThickness: 0.5
 
             Bar3DSeries {
                 itemLabelFormat: "@colLabel, @rowLabel: @valueLabel"
-
+                meshAngle: 5
                 ItemModelBarDataProxy {
-                    itemModel: PopModel {}
-                    // Mapping model roles to bar series rows, columns, and values.
+                    itemModel: PopModel {
+                        list: popList
+                    }
+
                     rowRole: "year"
                     columnRole: "city"
                     valueRole: "population"
