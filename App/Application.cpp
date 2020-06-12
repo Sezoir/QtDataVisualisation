@@ -46,7 +46,7 @@ namespace App {
         doc.selectSheet("CITIES-OVER-300K");
         for(int row = 2; row < 1693; row++)
         {
-            for(int col = 8; col < 15; col++)
+            for(int col = 8; col < 20; col++)
             {
                 PopulationItem item;
                 item.city = doc.read(row, 2).toString();

@@ -45,6 +45,7 @@ message(${HEADER_FILES})
 add_executable(DataVisualisation
   ${SOURCE_FILES}
   ${HEADER_FILES}
+  README.MD
 )
 
 # Add include directories found from glob
